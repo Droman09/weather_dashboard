@@ -21,11 +21,9 @@ function displayCity(){
             console.log(response)
         var conditionDiv = $("<div class ='condtions'>")
         
-
         //city name 
         var cityName = response.city.name;
         var nameDisplay = $("<h4>").text(cityName)
-
 
         // city time 
         var cityTime = response.list[0].dt_txt;
@@ -105,7 +103,6 @@ function displayCity(){
         forecast.append(forecastDiv); 
     })
     renderCities()
-
 }
 displayCity()
 
@@ -120,5 +117,16 @@ function renderCities(){
     }
 }
 renderCities()
+$(".add-city").click(function(event){
+    event.preventDefault();
+   
+    var city = $(".add").val().trim();
+    cities.push(city);
+    displayCity(city)
+    localStorage.setItem("city", city)
+    // renderCities();
+    console.log(localStorage)
+    
+})
 
 $(document).on("click", ".city-select", displayCity)

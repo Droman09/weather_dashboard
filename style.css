@@ -1,0 +1,56 @@
+body, html {
+    height: 100%;
+  }
+img{
+    background: grey;
+}
+
+.aside{
+    margin: 1rem;
+    border: 2px solid black
+}
+
+.city-view{  
+    margin : 0 auto;
+    padding-top: 1rem;
+}
+
+.h1{
+    margin: 0 auto;
+    text-align: center;
+    padding: 1rem;
+
+}
+
+.card{
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 200px;
+    height: 250px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+body {
+    background-image: url("https://media.apnarm.net.au/media/images/2020/08/07/v3imagesbina76005dedfda6535ff832055ec0c5527-pcbcbniwrx8555v0tu2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+   }
+
+   @media (max-width: 1430px) {
+        body {
+            background: url("https://media.apnarm.net.au/media/images/2020/08/07/v3imagesbina76005dedfda6535ff832055ec0c5527-pcbcbniwrx8555v0tu2.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height: 100%;
+            overflow: scroll;
+        
+    }
+}
