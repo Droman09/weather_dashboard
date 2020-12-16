@@ -3,6 +3,8 @@ var conditions = $(".condition-spot");
 var forecast = $(".forecast");
 //default city list 
 var cities = ["Chicago", "Los Angeles", "New York"];
+// var load = localStorage.getItem("city")
+// displayCity(load)
 
 //display
 
@@ -13,7 +15,7 @@ function displayCity(){
     var apiKey = "7315fad7d14bb6e3be75a7b373082527";
     var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey;
     // console.log(queryUrl)
-
+    
     $.ajax({
         url: queryUrl,
         method: "GET"
@@ -114,19 +116,18 @@ function renderCities(){
         p.attr("city-name", cities[i]);
         p.text(cities[i]);
         $(".city-view").append(p);
-    }
+    }    
 }
+
 renderCities()
 $(".add-city").click(function(event){
     event.preventDefault();
    
     var city = $(".add").val().trim();
     cities.push(city);
-    displayCity(city)
+    // displayCity(city)
     localStorage.setItem("city", city)
-    // renderCities();
     console.log(localStorage)
-    
 })
 
 $(document).on("click", ".city-select", displayCity)
