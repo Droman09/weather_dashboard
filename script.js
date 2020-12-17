@@ -79,9 +79,9 @@ function displayCity(){
             } else if (uv >= 6){
                 uvDisplay.addClass("text-white bg-primary")
             }
-            console.log(uv, uvDisplay)
+            
             conditionDiv.append(uvDisplay)
-
+            console.log(uv, uvDisplay)
         })
    
         conditions.append(conditionDiv)
