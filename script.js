@@ -4,6 +4,7 @@ var forecast = $(".forecast");
 //default city list 
 var cities = ["Chicago", "Los Angeles", "New York"];
 // var load = localStorage.getItem("city")
+
 // displayCity(load)
 
 //display
@@ -48,7 +49,7 @@ function displayCity(){
             ///temp
         var temperature = response.list[0].main.temp;
         console.log(temperature)
-        var pTemp = $("<p>").text("Temperature: " + temperature)
+        var pTemp = $("<p>").text("Temperature: " + temperature + "°F")
         conditionDiv.append(pTemp)
             //humidity 
         var humidity = response.list[0].main.humidity;
@@ -69,7 +70,18 @@ function displayCity(){
         }).then(function(uvResponse){
             console.log(uvResponse)
             var uv = uvResponse.value;
-            conditionDiv.append($("<p>").text("UV index: " + uv))
+            var uvDisplay = $("<p>").text("UV index: " + uv)
+
+            if (uv < 3){
+                uvDisplay.addClass("text-white bg-success")
+            } else if (uv >= 3 && uv <6){
+                uvDisplay.addClass("text-white bg-danger")
+            } else if (uv >= 6){
+                uvDisplay.addClass("text-white bg-primary")
+            }
+           
+            conditionDiv.append(uvDisplay)
+
         })
    
         conditions.append(conditionDiv)
@@ -92,7 +104,7 @@ function displayCity(){
                 var imgIcons = $("<img>").attr("src", "http://openweathermap.org/img/wn/"+fiveList[i].weather[0].icon+"@2x.png")
 
                 var fiveTemp = fiveList[i].main.temp
-                pTemps = $("<p>").text("Temp: " + fiveTemp);
+                pTemps = $("<p>").text("Temp: " + fiveTemp +"°F");
                 pTemps.addClass("card-text")
 
                 var fiveHumidity = fiveList[i].main.humidity; 
