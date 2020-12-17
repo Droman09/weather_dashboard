@@ -131,15 +131,17 @@ function renderCities(){
     }    
 }
 
-renderCities()
 $(".add-city").click(function(event){
     event.preventDefault();
-   
+    
     var city = $(".add").val().trim();
-    cities.push(city);
-    // displayCity(city)
+    cities.push(city); 
+    renderCities()
     localStorage.setItem("city", city)
+    // displayCity(city)
+  
     console.log(localStorage)
 })
+
 
 $(document).on("click", ".city-select", displayCity)
