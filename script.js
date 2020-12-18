@@ -63,7 +63,7 @@ function displayCity(){
             //IV index
         var lat = response.city.coord.lat 
         var lon = response.city.coord.lon
-        var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+"&appid="+ apiKey;
+        var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+"&appid="+ apiKey;
 
         $.ajax({
             url: uvUrl,
