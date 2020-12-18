@@ -1,4 +1,5 @@
 // query select 
+document.cookie = "Set-Cookie: SameSite=None; Secure"
 var conditions = $(".condition-spot");
 var forecast = $(".forecast");
 //default city list 
