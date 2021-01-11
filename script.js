@@ -4,16 +4,14 @@ var conditions = $(".condition-spot");
 var forecast = $(".forecast");
 //default city list 
 var cities = ["Chicago", "Los Angeles", "New York"];
-// var load = localStorage.getItem("city")
-
-// displayCity(load)
-
+var load = localStorage.getItem("city")
+// console.log(load)
+displayCity(load)
 //display
 
-function displayCity(){
+function displayCity(city){
     forecast.empty()
     conditions.empty()
-    var city = $(this).attr("city-name");
     var apiKey = "7315fad7d14bb6e3be75a7b373082527";
     var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey;
     // console.log(queryUrl)
@@ -94,7 +92,6 @@ function displayCity(){
 
          //storing 5 day list in a variable 
          var fiveList = response.list;
-         
          for (var i = 0; i<fiveList.length; i+=8 ){
                 var forecastSlot = $("<div class='shadow-lg card bg-light mb-3' style='max-width: 24rem;'>");
 
@@ -119,7 +116,7 @@ function displayCity(){
     })
     renderCities()
 }
-displayCity()
+
 
 function renderCities(){
     $(".city-view").empty();
@@ -129,6 +126,8 @@ function renderCities(){
         p.attr("city-name", cities[i]);
         p.text(cities[i]);
         $(".city-view").append(p);
+
+        p.on("click", event => displayCity(event.target.innerText))
     }    
 }
 
@@ -139,10 +138,6 @@ $(".add-city").click(function(event){
     cities.push(city); 
     renderCities()
     localStorage.setItem("city", city)
-    // displayCity(city)
-  
-    console.log(localStorage)
+    displayCity(city)
+    // console.log(localStorage)
 })
-
-
-$(document).on("click", ".city-select", displayCity)
